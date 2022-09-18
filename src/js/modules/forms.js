@@ -1,11 +1,8 @@
-// import checkNumInputs from "./checkNumInputs";
-
 const forms = () => {
     const form = document.querySelectorAll("form"),
         inputs = document.querySelectorAll("input"),
+        messageInput = document.querySelectorAll('[name="message"]'),
         upload = document.querySelectorAll('[name="upload"]');
-
-    // checkNumInputs('input[name="user_phone"]');
 
     const message = {
         loading: "Идет загрузка",
@@ -32,6 +29,9 @@ const forms = () => {
     const clearInputs = () => {
         inputs.forEach((item) => {
             item.value = "";
+        });
+        messageInput.forEach((input) => {
+            input.value = "";
         });
         upload.forEach((item) => {
             item.previousElementSibling.textContent = "Файл не выбран!";
