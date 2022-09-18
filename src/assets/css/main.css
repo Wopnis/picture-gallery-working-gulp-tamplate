@@ -208,6 +208,7 @@ h4 {
 .main {
   background-color: #f7e7e6;
   padding-top: 3rem;
+  /* padding-bottom: 3rem; */
   /* Making it beautiful */
 
 }
@@ -220,8 +221,9 @@ h4 {
   height: 4em;
   /* example */
 
-  line-height: 2em /* the same as height */
-;
+  line-height: 2em
+    /* the same as height */
+  ;
 }
 .main .file_upload > button {
   float: right;
@@ -555,8 +557,9 @@ h4 {
   height: 4em;
   /* example */
 
-  line-height: 2em /* the same as height */
-;
+  line-height: 2em
+    /* the same as height */
+  ;
 }
 .calc .file_upload > button {
   float: right;
@@ -566,8 +569,9 @@ h4 {
   height: 100%;
 }
 .calc .file_upload > div {
-  padding-left: 1em /* example */
-;
+  padding-left: 1em
+    /* example */
+  ;
 }
 .calc .file_upload input[type=file] {
   position: absolute;
@@ -1151,8 +1155,9 @@ h4 {
   height: 4em;
   /* example */
 
-  line-height: 2em /* the same as height */
-;
+  line-height: 2em
+    /* the same as height */
+  ;
 }
 .popup-design .file_upload > button {
   float: right;
@@ -1257,6 +1262,10 @@ h4 {
   border-radius: 4px;
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
+}
+
+.status {
+  text-align: center;
 }
 @media (max-width: 1399px) {
   .paints {
@@ -1443,7 +1452,7 @@ h4 {
     bottom: -2.9rem;
   }
   .card-3 .card-block .p-heading {
-    margin: 2.5rem 0  3.5rem 0;
+    margin: 2.5rem 0 3.5rem 0;
   }
   .card-3 .card-block-text {
     padding-top: 0;
