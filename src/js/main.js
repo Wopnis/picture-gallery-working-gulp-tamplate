@@ -3,7 +3,8 @@ import sliders from "./modules/sliders";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
 import checkTextInputs from "./modules/checkTextInputs";
-import moreStyles from "./modules/moreStyles";
+// import moreStyles from "./modules/moreStyles";
+import moreStylesDB from "./modules/moreStylesDB";
 
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
@@ -20,5 +21,6 @@ window.addEventListener("DOMContentLoaded", () => {
     mask('[name="phone"]');
     checkTextInputs('[name="name"]');
     checkTextInputs('[name="message"]');
-    moreStyles(".button-styles", ".styles-2");
+    // moreStyles(".button-styles", ".styles-2");
+    moreStylesDB(".button-styles", "#styles .row");
 });
