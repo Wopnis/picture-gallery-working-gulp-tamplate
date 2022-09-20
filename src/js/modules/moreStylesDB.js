@@ -4,10 +4,10 @@ const moreStylesDB = (trigger, wrapper) => {
     const button = document.querySelector(trigger);
 
     button.addEventListener("click", () => {
-        getResource("http://localhost:3000/styles")
-            .then((result) => createCards(result))
+        getResource("assets/db.json")
+            .then((result) => createCards(result.styles))
             .catch((error) => console.log(error));
-        button.classList.add("animated", "rotateOut");
+        button.classList.add("animated", "rollOut");
     });
 
     function createCards(response) {

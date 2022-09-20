@@ -183,7 +183,7 @@
 						<a href="#">Подробнее</a>
 					</div>
 				</div>
-				<div class="hidden-lg hidden-md hidden-sm hidden-xs styles-2">
+				<!-- <div class="hidden-lg hidden-md hidden-sm hidden-xs styles-2">
 					<div class=styles-block>
 						<img src=assets/img/styles-5.jpg alt>
 						<h4>Пастелью</h4>
@@ -210,7 +210,7 @@
 						<h4>Шарж</h4>
 						<a href="#">Подробнее</a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<button class="button button-transparent button-styles">Посмотреть больше стилей</button>
 		</div>
@@ -241,7 +241,7 @@
 			<h2>Рассчитайте стоимость и получите скидку 30%</h2>
 			<div class=row>
 				<div class="col-md-4 col-offset-1">
-					<form class=form action=# method=POST enctype=multipart/form-data>
+					<form class="form calc_form" action=# method=POST enctype=multipart/form-data>
 						<h4>Загрузите свое фото</h4>
 						<div class=file_upload>
 							<button type=button>Загрузить фотографию</button>
@@ -249,28 +249,28 @@
 							<input type=file name=upload>
 						</div>
 						<select id=size>
-							<option>Выберите размер картины</option>
-							<option>40x50</option>
-							<option>50x70</option>
-							<option>70x70</option>
-							<option>70x100</option>
+							<option value>Выберите размер картины</option>
+							<option value="50">40x50</option>
+							<option value="100">50x70</option>
+							<option value="150">70x70</option>
+							<option value="200">70x100</option>
 						</select>
 						<select id=material>
-							<option>Выберите материал картины</option>
-							<option
+							<option value>Выберите материал картины</option>
+							<option value="1"
 											title="Изящный, позволяет легко создавать текстуру, подходит для декоративных картин маслом.">
 								Холст из волокна</option>
-							<option
+							<option value="1.2"
 											title="Достаточно грубый и создает ощущение реальности, подходит для классических пейзажей, натюрмортов и портретов.">
 								Льняной холст</option>
-							<option title="Изящный, подходит для всех типов реалистичных портретов.">Холст из
-								натурального хлопка </option>
+							<option value="1.5" title="Изящный, подходит для всех типов реалистичных портретов.">
+								Холст из натурального хлопка </option>
 						</select>
 						<select id=options>
-							<option>Дополнительные услуги</option>
-							<option>Покрытие арт-гелем</option>
-							<option>Экспресс-изготовление</option>
-							<option>Доставка готовых работ </option>
+							<option value="0">Дополнительные услуги</option>
+							<option value="100">Покрытие арт-гелем</option>
+							<option value="200">Экспресс-изготовление</option>
+							<option value="50">Доставка готовых работ </option>
 						</select>
 						<input type="text" class="promocode" placeholder="Введите ваш промокод">
 						<div class=calc-price>Для расчета нужно выбрать размер картины и материал картины</div>
@@ -737,8 +737,8 @@
 				<button class=popup-close>&times;</button>
 				<h2>У нас для вас есть подарок!</h2>
 				<img src="assets/img/gift.png" alt="">
-				<p>Введите промо-код IWANTPOPART и получите скидку 30% на портрет любого размера в стиле
-					pop-art!</p>
+				<p>Введите промо-код BORISOVFOTOPOPART и получите скидку 40% на портрет любого размера в
+					стиле pop-art!</p>
 			</div>
 		</div>
 	</div>

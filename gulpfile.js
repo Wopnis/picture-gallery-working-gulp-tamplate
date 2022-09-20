@@ -4,8 +4,9 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-const dist = "E:/Server/OSPanel/domains/TEST";
+const dist = "./dist/";
 // const dist = "./dist/";
+// dist = "E:/Server/OSPanel/domains/TEST";
 
 gulp.task("copy-html", () => {
     return gulp
@@ -48,7 +49,7 @@ gulp.task("build-js", () => {
                         },
                     ],
                 },
-            })
+            }),
         )
         .pipe(gulp.dest(dist))
         .on("end", browsersync.reload);
@@ -106,7 +107,7 @@ gulp.task("build-prod-js", () => {
                         },
                     ],
                 },
-            })
+            }),
         )
         .pipe(gulp.dest(dist));
 });
