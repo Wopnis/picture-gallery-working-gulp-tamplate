@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
         ".feedback-slider-item",
         "horizontal",
         ".main-prev-btn",
-        ".main-next-btn"
+        ".main-next-btn",
     );
     sliders(".main-slider-item", "vertical");
     forms();
@@ -24,5 +24,5 @@ window.addEventListener("DOMContentLoaded", () => {
     checkTextInputs('[name="message"]');
     // moreStyles(".button-styles", ".styles-2");
     moreStylesDB(".button-styles", "#styles .row");
-    calc("#size", "#material", "#options", ".promocode", ".calc-price");
+    calc("#size", "#material", "#options", "#promocode", ".calc-price");
 });

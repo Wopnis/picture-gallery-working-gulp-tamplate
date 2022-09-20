@@ -8,6 +8,8 @@ const calc = (size, material, options, promocode, result) => {
 
     let sum = 0;
 
+    console.log(promocodeBlock);
+
     const calcFunction = () => {
         sum = Math.round(
             +sizeBlock.value * +materialBlock.value + +optionsBlock.value,
@@ -16,8 +18,8 @@ const calc = (size, material, options, promocode, result) => {
         if (sizeBlock.value === "" || materialBlock.value === "") {
             resultBlock.textContent =
                 "Пожалуйста, выберите размер и материал картины!";
-        } else if (promocodeBlock.textContent === "BORISOVFOTOPOPART") {
-            resultBlock.value = Math.round(sum * 0.6);
+        } else if (promocodeBlock.value === "BORISOVFOTOPOPART") {
+            resultBlock.textContent = Math.round(sum * 0.6);
         } else {
             resultBlock.textContent = sum;
         }
@@ -25,12 +27,14 @@ const calc = (size, material, options, promocode, result) => {
 
     const formReset = ({ target }) => {
         target.reset();
+        resultBlock.textContent =
+            "Для расчета нужно выбрать размер картины и материал картины";
     };
 
     sizeBlock.addEventListener("change", calcFunction);
     materialBlock.addEventListener("change", calcFunction);
     optionsBlock.addEventListener("change", calcFunction);
-    sizeBlock.addEventListener("input", calcFunction);
+    promocodeBlock.addEventListener("input", calcFunction);
 
     calcForm.addEventListener("submit", formReset);
 };

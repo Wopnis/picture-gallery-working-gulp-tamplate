@@ -4371,7 +4371,7 @@ window.addEventListener("DOMContentLoaded", function () {
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_4__["default"])('[name="message"]'); // moreStyles(".button-styles", ".styles-2");
 
   Object(_modules_moreStylesDB__WEBPACK_IMPORTED_MODULE_5__["default"])(".button-styles", "#styles .row");
-  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])("#size", "#material", "#options", ".promocode", ".calc-price");
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])("#size", "#material", "#options", "#promocode", ".calc-price");
 });
 
 /***/ }),
@@ -4393,14 +4393,15 @@ var calc = function calc(size, material, options, promocode, result) {
       resultBlock = document.querySelector(result),
       calcForm = document.querySelector(".calc_form ");
   var sum = 0;
+  console.log(promocodeBlock);
 
   var calcFunction = function calcFunction() {
     sum = Math.round(+sizeBlock.value * +materialBlock.value + +optionsBlock.value);
 
     if (sizeBlock.value === "" || materialBlock.value === "") {
       resultBlock.textContent = "Пожалуйста, выберите размер и материал картины!";
-    } else if (promocodeBlock.textContent === "BORISOVFOTOPOPART") {
-      resultBlock.value = Math.round(sum * 0.6);
+    } else if (promocodeBlock.value === "BORISOVFOTOPOPART") {
+      resultBlock.textContent = Math.round(sum * 0.6);
     } else {
       resultBlock.textContent = sum;
     }
@@ -4409,12 +4410,13 @@ var calc = function calc(size, material, options, promocode, result) {
   var formReset = function formReset(_ref) {
     var target = _ref.target;
     target.reset();
+    resultBlock.textContent = "Для расчета нужно выбрать размер картины и материал картины";
   };
 
   sizeBlock.addEventListener("change", calcFunction);
   materialBlock.addEventListener("change", calcFunction);
   optionsBlock.addEventListener("change", calcFunction);
-  sizeBlock.addEventListener("input", calcFunction);
+  promocodeBlock.addEventListener("input", calcFunction);
   calcForm.addEventListener("submit", formReset);
 };
 
