@@ -8,8 +8,6 @@ const calc = (size, material, options, promocode, result) => {
 
     let sum = 0;
 
-    console.log(promocodeBlock);
-
     const calcFunction = () => {
         sum = Math.round(
             +sizeBlock.value * +materialBlock.value + +optionsBlock.value,

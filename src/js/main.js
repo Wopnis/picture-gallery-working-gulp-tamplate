@@ -6,17 +6,13 @@ import checkTextInputs from "./modules/checkTextInputs";
 // import moreStyles from "./modules/moreStyles";
 import moreStylesDB from "./modules/moreStylesDB";
 import calc from "./modules/calc";
+import filter from "./modules/filter";
 
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     modals();
-    sliders(
-        ".feedback-slider-item",
-        "horizontal",
-        ".main-prev-btn",
-        ".main-next-btn",
-    );
+    sliders(".feedback-slider-item", "horizontal", ".main-prev-btn", ".main-next-btn");
     sliders(".main-slider-item", "vertical");
     forms();
     mask('[name="phone"]');
@@ -25,4 +21,5 @@ window.addEventListener("DOMContentLoaded", () => {
     // moreStyles(".button-styles", ".styles-2");
     moreStylesDB(".button-styles", "#styles .row");
     calc("#size", "#material", "#options", "#promocode", ".calc-price");
+    filter();
 });
