@@ -7,6 +7,7 @@ import checkTextInputs from "./modules/checkTextInputs";
 import moreStylesDB from "./modules/moreStylesDB";
 import calc from "./modules/calc";
 import filter from "./modules/filter";
+import pictureSizing from "./modules/pictureSizing";
 
 window.addEventListener("DOMContentLoaded", () => {
     "use strict";
@@ -22,4 +23,5 @@ window.addEventListener("DOMContentLoaded", () => {
     moreStylesDB(".button-styles", "#styles .row");
     calc("#size", "#material", "#options", "#promocode", ".calc-price");
     filter();
+    pictureSizing(".sizes-block");
 });
