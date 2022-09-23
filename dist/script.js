@@ -4410,6 +4410,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
 /* harmony import */ var _modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/pictureSizing */ "./src/js/modules/pictureSizing.js");
+/* harmony import */ var _modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accourdeonJS */ "./src/js/modules/accourdeonJS.js");
 
 
 
@@ -4418,6 +4419,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+ // import accourdeon from "./modules/accourdeon";
 
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -4434,8 +4437,51 @@ window.addEventListener("DOMContentLoaded", function () {
   Object(_modules_moreStylesDB__WEBPACK_IMPORTED_MODULE_5__["default"])(".button-styles", "#styles .row");
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])("#size", "#material", "#options", "#promocode", ".calc-price");
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__["default"])(".sizes-block");
+  Object(_modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__["default"])(".sizes-block"); // accourdeon(".accordion-heading", ".accordion-block");
+
+  Object(_modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__["default"])(".accordion-heading");
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/accourdeonJS.js":
+/*!****************************************!*\
+  !*** ./src/js/modules/accourdeonJS.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var accourdeonJS = function accourdeonJS(triggerSelector) {
+  var btns = document.querySelectorAll(triggerSelector),
+      blocks = document.querySelectorAll(".accordion-block");
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      blocks.forEach(function (block) {
+        block.classList.remove("active-content");
+        block.style.maxHeight = "0px";
+      });
+      btns.forEach(function (btn) {
+        btn.classList.remove("active-style");
+      });
+      this.classList.toggle("active-style");
+      this.nextElementSibling.classList.toggle("active-content");
+
+      if (this.classList.contains("active-style")) {
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + "px";
+      } else {
+        this.nextElementSibling.style.maxHeight = "0px";
+      }
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (accourdeonJS);
 
 /***/ }),
 
