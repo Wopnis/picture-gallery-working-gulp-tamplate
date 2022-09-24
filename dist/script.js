@@ -4674,6 +4674,7 @@ var filter = function filter() {
 
   btnAll.addEventListener('click', function () {
     typeFilter(markAll);
+    nextBlock.classList.remove('animated', 'slideInDown');
   });
   btnLovers.addEventListener('click', function () {
     typeFilter(markLovers);

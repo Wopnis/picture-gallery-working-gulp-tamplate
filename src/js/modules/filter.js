@@ -39,6 +39,7 @@ const filter = () => {
 
     btnAll.addEventListener('click', () => {
         typeFilter(markAll);
+        nextBlock.classList.remove('animated', 'slideInDown');
     });
 
     btnLovers.addEventListener('click', () => {
