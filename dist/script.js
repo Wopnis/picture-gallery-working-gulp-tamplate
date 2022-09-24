@@ -4411,6 +4411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
 /* harmony import */ var _modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/pictureSizing */ "./src/js/modules/pictureSizing.js");
 /* harmony import */ var _modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accourdeonJS */ "./src/js/modules/accourdeonJS.js");
+/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
 
 
 
@@ -4423,23 +4424,23 @@ __webpack_require__.r(__webpack_exports__);
  // import accourdeon from "./modules/accourdeon";
 
 
-window.addEventListener("DOMContentLoaded", function () {
-  "use strict";
 
+window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])(".feedback-slider-item", "horizontal", ".main-prev-btn", ".main-next-btn");
-  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])(".main-slider-item", "vertical");
+  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
+  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_1__["default"])('.main-slider-item', 'vertical');
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["default"])();
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_3__["default"])('[name="phone"]');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_4__["default"])('[name="name"]');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_4__["default"])('[name="message"]'); // moreStyles(".button-styles", ".styles-2");
 
-  Object(_modules_moreStylesDB__WEBPACK_IMPORTED_MODULE_5__["default"])(".button-styles", "#styles .row");
-  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])("#size", "#material", "#options", "#promocode", ".calc-price");
+  Object(_modules_moreStylesDB__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '#styles .row');
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])('#size', '#material', '#options', '#promocode', '.calc-price');
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__["default"])(".sizes-block"); // accourdeon(".accordion-heading", ".accordion-block");
+  Object(_modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__["default"])('.sizes-block'); // accourdeon(".accordion-heading", ".accordion-block");
 
-  Object(_modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__["default"])(".accordion-heading");
+  Object(_modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__["default"])('.accordion-heading');
+  Object(_modules_burger__WEBPACK_IMPORTED_MODULE_10__["default"])('.burger-menu', '.burger');
 });
 
 /***/ }),
@@ -4482,6 +4483,37 @@ var accourdeonJS = function accourdeonJS(triggerSelector) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accourdeonJS);
+
+/***/ }),
+
+/***/ "./src/js/modules/burger.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/burger.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var burger = function burger(menuSelector, burgerSelector) {
+  var menuElem = document.querySelector(menuSelector),
+      burgerElem = document.querySelector(burgerSelector);
+  menuElem.style.display = 'none';
+  burgerElem.addEventListener('click', function () {
+    if (menuElem.style.display == 'none' && window.screen.availWidth < 993) {
+      menuElem.style.display = 'block';
+    } else {
+      menuElem.style.display = 'none';
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (window.screen.availWidth > 992) {
+      menuElem.style.display = 'none';
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (burger);
 
 /***/ }),
 
@@ -4602,70 +4634,72 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var filter = function filter() {
-  var menu = document.querySelector(".portfolio-menu"),
-      items = menu.querySelectorAll("li"),
-      btnAll = menu.querySelector(".all"),
-      btnLovers = menu.querySelector(".lovers"),
-      btnChef = menu.querySelector(".chef"),
-      btnGirl = menu.querySelector(".girl"),
-      btnGuy = menu.querySelector(".guy"),
-      btnGrandmother = menu.querySelector(".grandmother"),
-      btnGranddad = menu.querySelector(".granddad"),
-      wrapper = document.querySelector(".portfolio-wrapper"),
-      markAll = wrapper.querySelectorAll(".all"),
-      markGirl = wrapper.querySelectorAll(".girl"),
-      markLovers = wrapper.querySelectorAll(".lovers"),
-      markChef = wrapper.querySelectorAll(".chef"),
-      markGuy = wrapper.querySelectorAll(".guy"),
-      no = document.querySelector(".portfolio-no");
+  var menu = document.querySelector('.portfolio-menu'),
+      items = menu.querySelectorAll('li'),
+      btnAll = menu.querySelector('.all'),
+      btnLovers = menu.querySelector('.lovers'),
+      btnChef = menu.querySelector('.chef'),
+      btnGirl = menu.querySelector('.girl'),
+      btnGuy = menu.querySelector('.guy'),
+      btnGrandmother = menu.querySelector('.grandmother'),
+      btnGranddad = menu.querySelector('.granddad'),
+      wrapper = document.querySelector('.portfolio-wrapper'),
+      markAll = wrapper.querySelectorAll('.all'),
+      markGirl = wrapper.querySelectorAll('.girl'),
+      markLovers = wrapper.querySelectorAll('.lovers'),
+      markChef = wrapper.querySelectorAll('.chef'),
+      markGuy = wrapper.querySelectorAll('.guy'),
+      no = document.querySelector('.portfolio-no'),
+      nextBlock = document.querySelector('.gift');
 
   var typeFilter = function typeFilter(markType) {
     markAll.forEach(function (mark) {
-      mark.style.display = "none";
-      mark.classList.remove("animated", "fadeIn");
+      mark.style.display = 'none';
+      mark.classList.remove('animated', 'fadeIn');
     });
-    no.style.display = "none";
-    no.classList.remove("animated", "fadeIn");
+    no.style.display = 'none';
+    no.classList.remove('animated', 'fadeIn');
+    nextBlock.classList.add('animated', 'slideInDown');
 
     if (markType) {
       markType.forEach(function (mark) {
-        mark.style.display = "block";
-        mark.classList.add("animated", "fadeIn");
+        mark.style.display = 'block';
+        mark.classList.add('animated', 'fadeIn');
       });
     } else {
-      no.style.display = "block";
-      no.classList.add("animated", "fadeIn");
+      no.style.display = 'block';
+      no.classList.add('animated', 'fadeIn');
     }
   };
 
-  btnAll.addEventListener("click", function () {
+  btnAll.addEventListener('click', function () {
     typeFilter(markAll);
   });
-  btnLovers.addEventListener("click", function () {
+  btnLovers.addEventListener('click', function () {
     typeFilter(markLovers);
   });
-  btnChef.addEventListener("click", function () {
+  btnChef.addEventListener('click', function () {
     typeFilter(markChef);
   });
-  btnGirl.addEventListener("click", function () {
+  btnGirl.addEventListener('click', function () {
     typeFilter(markGirl);
   });
-  btnGuy.addEventListener("click", function () {
+  btnGuy.addEventListener('click', function () {
     typeFilter(markGuy);
   });
-  btnGrandmother.addEventListener("click", function () {
+  btnGrandmother.addEventListener('click', function () {
     typeFilter();
   });
-  btnGranddad.addEventListener("click", function () {
+  btnGranddad.addEventListener('click', function () {
     typeFilter();
   });
-  menu.addEventListener("click", function (e) {
+  menu.addEventListener('click', function (e) {
     var target = e.target;
 
-    if (target && target.tagName === "LI") {
+    if (target && target.tagName === 'LI') {
       items.forEach(function (btn) {
-        btn.classList.remove("active");
-        target.classList.add("active");
+        btn.classList.remove('active');
+        target.classList.add('active');
       });
     }
   });
