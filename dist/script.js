@@ -4412,6 +4412,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_pictureSizing__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/pictureSizing */ "./src/js/modules/pictureSizing.js");
 /* harmony import */ var _modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accourdeonJS */ "./src/js/modules/accourdeonJS.js");
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
+/* harmony import */ var _modules_scrollingUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/scrollingUp */ "./src/js/modules/scrollingUp.js");
+/* harmony import */ var _modules_linksScroll__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/linksScroll */ "./src/js/modules/linksScroll.js");
 
 
 
@@ -4422,6 +4424,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // import accourdeon from "./modules/accourdeon";
+
+
 
 
 
@@ -4441,6 +4445,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Object(_modules_accourdeonJS__WEBPACK_IMPORTED_MODULE_9__["default"])('.accordion-heading');
   Object(_modules_burger__WEBPACK_IMPORTED_MODULE_10__["default"])('.burger-menu', '.burger');
+  Object(_modules_scrollingUp__WEBPACK_IMPORTED_MODULE_11__["default"])('.pageup');
+  Object(_modules_linksScroll__WEBPACK_IMPORTED_MODULE_12__["default"])();
 });
 
 /***/ }),
@@ -4827,6 +4833,54 @@ var forms = function forms() {
 
 /***/ }),
 
+/***/ "./src/js/modules/linksScroll.js":
+/*!***************************************!*\
+  !*** ./src/js/modules/linksScroll.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var linksScroll = function linksScroll() {
+  var links = document.querySelectorAll('[href^="#"]'),
+      speed = 0.5;
+  links.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      var widthTop = document.documentElement.scrollTop,
+          hash = this.hash,
+          topOfBlock = document.querySelector(hash).getBoundingClientRect().top,
+          start = null;
+      requestAnimationFrame(step);
+
+      function step(time) {
+        if (start === null) {
+          start = time;
+        }
+
+        var progress = time - start,
+            px = topOfBlock < 0 ? Math.max(widthTop - progress / speed, widthTop + topOfBlock) : Math.min(widthTop + progress / speed, widthTop + topOfBlock);
+        document.documentElement.scrollTo(0, px);
+
+        if (px != widthTop + topOfBlock) {
+          requestAnimationFrame(step);
+        } else {
+          location.hash = hash;
+        }
+      }
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (linksScroll);
+
+/***/ }),
+
 /***/ "./src/js/modules/mask.js":
 /*!********************************!*\
   !*** ./src/js/modules/mask.js ***!
@@ -5119,6 +5173,85 @@ var pictureSizing = function pictureSizing(imgSelector) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (pictureSizing);
+
+/***/ }),
+
+/***/ "./src/js/modules/scrollingUp.js":
+/*!***************************************!*\
+  !*** ./src/js/modules/scrollingUp.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var scrollingUp = function scrollingUp(arrowSelector) {
+  var upElem = document.querySelector(arrowSelector);
+  window.addEventListener('scroll', function () {
+    if (document.documentElement.scrollTop > 1650) {
+      upElem.classList.add('animated', 'fadeIn');
+      upElem.classList.remove('fadeOut');
+    } else {
+      upElem.classList.add('fadeOut');
+      upElem.classList.remove('fadeIn');
+    }
+  });
+  var element = document.documentElement,
+      body = document.body;
+
+  var countScroll = function countScroll() {
+    upElem.addEventListener('click', function (event) {
+      var scrollToTop = Math.round(body.scrollTop || element.scrollTop);
+
+      if (this.hash !== '') {
+        event.preventDefault();
+        var hashElement = document.querySelector(this.hash),
+            hashElementDist = 0;
+
+        while (hashElement.offsetParent) {
+          hashElementDist += hashElement.offsetTop;
+          hashElement = hashElement.offsetParent;
+        }
+
+        hashElementDist = Math.round(hashElementDist);
+        smoothScroll(scrollToTop, hashElementDist, this.hash);
+      }
+    });
+  };
+
+  var smoothScroll = function smoothScroll(from, to, hash) {
+    var timeInterval = 0.3,
+        prevScrollToTop,
+        speed;
+
+    if (to > from) {
+      speed = 30;
+    } else {
+      speed = -30;
+    }
+
+    var move = setInterval(function () {
+      var scrollToTop = Math.round(body.scrollTop || element.scrollTop);
+
+      if (prevScrollToTop === scrollToTop || to > from && scrollToTop >= to || to < from && scrollToTop <= to) {
+        clearInterval(move);
+        history.replaceState(history.state, document.title, location.href.replace(/#.*$/g, '') + hash);
+      } else {
+        body.scrollTop += speed;
+        element.scrollTop += speed;
+        prevScrollToTop = scrollToTop;
+      }
+    }, timeInterval);
+  };
+
+  countScroll();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (scrollingUp);
 
 /***/ }),
 

@@ -11,6 +11,8 @@ import pictureSizing from './modules/pictureSizing';
 // import accourdeon from "./modules/accourdeon";
 import accourdeonJS from './modules/accourdeonJS';
 import burger from './modules/burger';
+import scrollingUp from './modules/scrollingUp';
+import linksScroll from './modules/linksScroll';
 
 window.addEventListener('DOMContentLoaded', () => {
     modals();
@@ -28,4 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // accourdeon(".accordion-heading", ".accordion-block");
     accourdeonJS('.accordion-heading');
     burger('.burger-menu', '.burger');
+    scrollingUp('.pageup');
+    linksScroll();
 });
