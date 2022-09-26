@@ -4512,6 +4512,13 @@ var burger = function burger(menuSelector, burgerSelector) {
       menuElem.style.display = 'none';
     }
   });
+  window.addEventListener('click', function (event) {
+    var target = event.target;
+
+    if (target != burgerElem) {
+      menuElem.style.display = 'none';
+    }
+  });
   window.addEventListener('resize', function () {
     if (window.screen.availWidth > 992) {
       menuElem.style.display = 'none';
@@ -5224,7 +5231,7 @@ var scrollingUp = function scrollingUp(arrowSelector) {
   };
 
   var smoothScroll = function smoothScroll(from, to, hash) {
-    var timeInterval = 0.3,
+    var timeInterval = 0.1,
         prevScrollToTop,
         speed;
 

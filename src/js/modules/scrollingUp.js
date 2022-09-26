@@ -32,7 +32,7 @@ const scrollingUp = (arrowSelector) => {
     };
 
     const smoothScroll = (from, to, hash) => {
-        let timeInterval = 0.3,
+        let timeInterval = 0.1,
             prevScrollToTop,
             speed;
         if (to > from) {

@@ -11,6 +11,13 @@ const burger = (menuSelector, burgerSelector) => {
         }
     });
 
+    window.addEventListener('click', (event) => {
+        let target = event.target;
+        if (target != burgerElem) {
+            menuElem.style.display = 'none';
+        }
+    });
+
     window.addEventListener('resize', () => {
         if (window.screen.availWidth > 992) {
             menuElem.style.display = 'none';
