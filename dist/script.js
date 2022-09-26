@@ -4847,7 +4847,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var linksScroll = function linksScroll() {
-  var links = document.querySelectorAll('[href^="#"]'),
+  var links = document.querySelectorAll('[href^="#"]:not(#up)'),
       speed = 0.5;
   links.forEach(function (link) {
     link.addEventListener('click', function (event) {

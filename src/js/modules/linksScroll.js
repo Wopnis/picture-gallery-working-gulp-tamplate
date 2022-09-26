@@ -1,5 +1,5 @@
 const linksScroll = () => {
-    let links = document.querySelectorAll('[href^="#"]'),
+    let links = document.querySelectorAll('[href^="#"]:not(#up)'),
         speed = 0.5;
     links.forEach((link) => {
         link.addEventListener('click', function (event) {
