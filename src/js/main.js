@@ -13,6 +13,7 @@ import accourdeonJS from './modules/accourdeonJS';
 import burger from './modules/burger';
 import scrollingUp from './modules/scrollingUp';
 import linksScroll from './modules/linksScroll';
+import drugNdrop from './modules/drugNdrop';
 
 window.addEventListener('DOMContentLoaded', () => {
     modals();
@@ -32,4 +33,5 @@ window.addEventListener('DOMContentLoaded', () => {
     burger('.burger-menu', '.burger');
     scrollingUp('.pageup');
     linksScroll();
+    drugNdrop();
 });

@@ -4414,6 +4414,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
 /* harmony import */ var _modules_scrollingUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/scrollingUp */ "./src/js/modules/scrollingUp.js");
 /* harmony import */ var _modules_linksScroll__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/linksScroll */ "./src/js/modules/linksScroll.js");
+/* harmony import */ var _modules_drugNdrop__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/drugNdrop */ "./src/js/modules/drugNdrop.js");
 
 
 
@@ -4424,6 +4425,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // import accourdeon from "./modules/accourdeon";
+
 
 
 
@@ -4447,6 +4449,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_burger__WEBPACK_IMPORTED_MODULE_10__["default"])('.burger-menu', '.burger');
   Object(_modules_scrollingUp__WEBPACK_IMPORTED_MODULE_11__["default"])('.pageup');
   Object(_modules_linksScroll__WEBPACK_IMPORTED_MODULE_12__["default"])();
+  Object(_modules_drugNdrop__WEBPACK_IMPORTED_MODULE_13__["default"])();
 });
 
 /***/ }),
@@ -4633,6 +4636,79 @@ var checkTextInputs = function checkTextInputs(selector) {
 
 /***/ }),
 
+/***/ "./src/js/modules/drugNdrop.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/drugNdrop.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.split */ "./node_modules/core-js/modules/es.string.split.js");
+/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var drugNdrop = function drugNdrop() {
+  var fileInsert = document.querySelectorAll('[name="upload"]');
+  ['dragenter', 'dragleave', 'dragover', 'drop'].forEach(function (eventName) {
+    fileInsert.forEach(function (insert) {
+      insert.addEventListener(eventName, preventDefaults, false);
+    });
+  });
+
+  function preventDefaults(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  function highLight(item) {
+    item.closest('.file_upload').style.border = '5px solid red';
+    item.closest('.file_upload').style.backgroundColor = 'rgba(0,0,0, .7)';
+  }
+
+  function unHighLight(item) {
+    item.closest('.file_upload').style.border = 'none';
+    item.closest('.file_upload').style.backgroundColor = '#FFFFFF';
+  }
+
+  ['dragenter', 'dragover'].forEach(function (eventName) {
+    fileInsert.forEach(function (insert) {
+      insert.addEventListener(eventName, function () {
+        return highLight(insert);
+      }, false);
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (eventName) {
+    fileInsert.forEach(function (insert) {
+      insert.addEventListener(eventName, function () {
+        return unHighLight(insert);
+      }, false);
+    });
+  });
+  fileInsert.forEach(function (insert) {
+    insert.addEventListener('drop', function (e) {
+      insert.files = e.dataTransfer.files;
+      var dots;
+      var filesNamesArrow = insert.files[0].name.split('.');
+      filesNamesArrow[0].length > 6 ? dots = '...' : dots = '.';
+      var name = filesNamesArrow[0].substring(0, 6) + dots + filesNamesArrow[1];
+      insert.previousElementSibling.textContent = name;
+      console.log(insert.files[0]);
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (drugNdrop);
+
+/***/ }),
+
 /***/ "./src/js/modules/filter.js":
 /*!**********************************!*\
   !*** ./src/js/modules/filter.js ***!
@@ -4754,82 +4830,85 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var forms = function forms() {
-  var form = document.querySelectorAll("form"),
-      inputs = document.querySelectorAll("input"),
+  var form = document.querySelectorAll('form'),
+      inputs = document.querySelectorAll('input'),
       messageInput = document.querySelectorAll('[name="message"]'),
       upload = document.querySelectorAll('[name="upload"]');
   var message = {
-    loading: "Идет загрузка",
-    success: "Сообщение отправлено. Скоро мы с Вами свяжемся!",
-    failure: "Что-то пошло не так...",
-    spinner: "assets/img/spinner.gif",
-    ok: "assets/img/ok.png",
-    fail: "assets/img/fail.png"
+    loading: 'Идет загрузка',
+    success: 'Сообщение отправлено. Скоро мы с Вами свяжемся!',
+    failure: 'Что-то пошло не так...',
+    spinner: 'assets/img/spinner.gif',
+    ok: 'assets/img/ok.png',
+    fail: 'assets/img/fail.png'
   };
   var sendingPath = {
-    designer: "assets/server.php",
-    questions: "assets/questions.php"
+    designer: 'assets/server.php',
+    questions: 'assets/questions.php' // designer: 'https://postman-echo.com/post',
+    // questions: 'https://postman-echo.com/post',
+
   };
 
   var clearInputs = function clearInputs() {
     inputs.forEach(function (item) {
-      item.value = "";
+      item.value = '';
     });
     messageInput.forEach(function (input) {
-      input.value = "";
+      input.value = '';
     });
     upload.forEach(function (item) {
-      item.previousElementSibling.textContent = "Файл не выбран!";
+      item.previousElementSibling.textContent = 'Файл не выбран!';
     });
   };
 
   upload.forEach(function (item) {
-    item.addEventListener("input", function () {
+    item.addEventListener('input', function () {
+      console.log(item.files[0]);
       var dots;
-      var filesNamesArrow = item.files[0].name.split(".");
-      filesNamesArrow[0].length > 6 ? dots = "..." : dots = "."; // console.log(item.files[0]);
+      var filesNamesArrow = item.files[0].name.split('.');
+      filesNamesArrow[0].length > 6 ? dots = '...' : dots = '.'; // console.log(item.files[0]);
 
       var name = filesNamesArrow[0].substring(0, 6) + dots + filesNamesArrow[1];
       item.previousElementSibling.textContent = name;
     });
   });
   form.forEach(function (item) {
-    item.addEventListener("submit", function (e) {
+    item.addEventListener('submit', function (e) {
       e.preventDefault();
-      var messageStatus = document.createElement("div");
-      messageStatus.classList.add("status");
+      var messageStatus = document.createElement('div');
+      messageStatus.classList.add('status');
       item.parentNode.appendChild(messageStatus);
-      item.classList.add("animated", "fadeOutUp");
+      item.classList.add('animated', 'fadeOutUp');
       setTimeout(function () {
-        item.style.display = "none";
+        item.style.display = 'none';
       }, 400);
-      var statusImg = document.createElement("img");
-      statusImg.setAttribute("src", message.spinner);
-      statusImg.classList.add("animated", "fadeInUp");
+      var statusImg = document.createElement('img');
+      statusImg.setAttribute('src', message.spinner);
+      statusImg.classList.add('animated', 'fadeInUp');
       messageStatus.appendChild(statusImg);
-      var textMessage = document.createElement("div");
+      var textMessage = document.createElement('div');
       textMessage.textContent = message.loading;
       messageStatus.appendChild(textMessage);
-      textMessage.classList.add("status");
+      textMessage.classList.add('status');
       var formData = new FormData(item);
       var api;
-      item.closest(".popup-design") || item.classList.contains("calc_form") ? api = sendingPath.designer : api = sendingPath.questions;
+      item.closest('.popup-design') || item.classList.contains('calc_form') ? api = sendingPath.designer : api = sendingPath.questions;
       console.log(api);
       Object(_services_requests__WEBPACK_IMPORTED_MODULE_6__["sendData"])(api, formData).then(function (res) {
         console.log(res);
-        statusImg.setAttribute("src", message.ok);
+        statusImg.setAttribute('src', message.ok);
         textMessage.textContent = message.success;
       }).catch(function (err) {
         console.log(err);
-        messageStatus.setAttribute("src", message.fail);
+        messageStatus.setAttribute('src', message.fail);
         textMessage.textContent = message.failure;
       }).finally(function () {
         clearInputs();
         setTimeout(function () {
           messageStatus.remove();
-          item.style.display = "block";
-          item.classList.remove("fadeOutUp");
-          item.classList.add("fadeInUp");
+          item.style.display = 'block';
+          item.classList.remove('fadeOutUp');
+          item.classList.add('fadeInUp');
         }, 2000);
       });
     });
